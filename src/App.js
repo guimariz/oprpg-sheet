@@ -2,33 +2,43 @@
 
 import React, { useState } from 'react';
 import './App.css';
-
-// REMOVA A IMPORTAÇÃO DO CHARACTERINFO DAQUI
-// import CharacterInfo from './components/CharacterInfo'; 
 import Header from './components/Header';
-import Attributes from './components/Attributes';
-import Skills from './components/Skills';
-import Equipment from './components/Equipment';
-import Abilities from './components/Abilities';
-import Inventory from './components/Inventory';
+import Body from './components/Body';
 
 function App() {
+  // O estado agora é mais completo para abranger todos os campos
   const [character, setCharacter] = useState({
-    nome: 'Roronoa Zoro',
-    especie: 'Humano',
-    idade: '21',
-    oficio: 'Espadachim',
-    reputacao: 'Caçador de Piratas',
-    aparencia: 'Cabelo verde, 3 espadas, cicatriz no olho.',
+    // Header Info
+    nome: 'Grei Deivi',
+    especie: 'Tritão',
+    idade: '31',
+    oficio: 'Imediato',
+    reputacao: 'Indomável',
+    aparencia: 'Um tritão alto, amarelo, careca, com uma grande barba branca e sem um dedinho.',
     tipo: 'Combatente',
-    bando: 'Piratas do Chapéu de Palha',
-    berries: '1.111.000.000',
-    jogador: 'Player',
-    nivel: '31',
-    xp: '500/1200',
-    recompensa: 'B$ 1.111.000.000',
+    bando: 'Fantasmas do Oeste',
+    berries: '',
+    jogador: 'Marizada',
+    nivel: '',
+    xp: '0/1000',
+    recompensa: 'B$ 30.000.000.000',
+
+    // Body Info
+    atributos: {
+      for: { valor: 10, mn: 0, ma: 0, mt: 0 },
+      rit: { valor: 10, mn: 0, ma: 0, mt: 0 },
+      res: { valor: 10, mn: 0, ma: 0, mt: 0 },
+      pro: { valor: 10, mn: 0, ma: 0, mt: 0 },
+      rac: { valor: 10, mn: 0, ma: 0, mt: 0 },
+      fer: { valor: 10, mn: 0, ma: 0, mt: 0 },
+    },
+    vitalidade: { real: 100, max: 100, mod: 0 },
+    disposicao: { real: 50, max: 50, mod: 0 },
+    estado: 'Saudável',
+    // ... outros estados para objetos, equipamentos, etc.
   });
 
+  // Função genérica para lidar com a maioria das mudanças
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCharacter(prevState => ({
@@ -37,29 +47,12 @@ function App() {
     }));
   };
 
+  // Funções mais específicas podem ser criadas aqui se necessário para listas complexas
+
   return (
     <div className="sheet-container">
-      {/* Passe todo o objeto 'character' e a função 'handleChange' para o Header */}
-      <Header
-        character={character}
-        handleChange={handleChange}
-      />
-      <main className="sheet-body">
-        <div className="left-column">
-          <Attributes />
-          <Skills />
-        </div>
-        <div className="right-column">
-          {/* O CHARACTERINFO NÃO É MAIS RENDERIZADO AQUI */}
-          <Equipment />
-          <Abilities />
-          <Inventory />
-          <div className="section-box learning-box">
-             <h2 className="section-title">APRENDIZADO</h2>
-             <textarea />
-          </div>
-        </div>
-      </main>
+      <Header character={character} handleChange={handleChange} />
+      <Body character={character} handleChange={handleChange} />
     </div>
   );
 }

@@ -1,111 +1,166 @@
 /* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=IM+Fell+English+SC&display=swap');
 
-/* Adicionar ao final do arquivo */
+/* Reset e Estilos Globais */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-/* 1. Grid principal do Header */
-.header-grid-container {
-  display: grid;
-  grid-template-columns: 200px 1fr; /* Coluna da imagem com 200px e o resto para as infos */
-  gap: 1.5rem;
-  padding: 1rem;
+body {
+  background-color: #3d2c1d;
+  color: #333;
+  font-family: 'IM Fell English SC', serif;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.sheet-container {
+  width: 1200px;
+  max-width: 95%;
+  background-color: #f5e5c0;
+  border: 4px solid #5a3d2b;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  padding: 1.5rem;
+}
+
+/* Estilos de Inputs Genéricos */
+input[type="text"], textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #6b4f3a;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-bottom: 1px solid #333;
+}
+
+.section-box {
   border: 2px solid #8c6a4d;
+  padding: 0.8rem;
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+.section-title {
+  font-family: 'Pirata One', cursive;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 0.8rem;
+  color: #4a2c1a;
+  border-bottom: 2px solid #8c6a4d;
+  padding-bottom: 0.4rem;
+}
+
+/* --- HEADER --- */
+.header-container {
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  gap: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-/* 2. Painel esquerdo (imagem) */
-.header-image-pane {
+.header-left-pane {
   display: flex;
   flex-direction: column;
   border: 3px solid #333;
 }
-.wanted-image-box {
-  flex-grow: 1; /* Ocupa todo o espaço disponível */
+.wanted-image-placeholder {
+  flex-grow: 1;
   background-color: #e0d0b0;
 }
 .wanted-text-bar {
   background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 5px 0;
+  color: white; text-align: center; padding: 5px 0;
 }
 .wanted-text {
-  font-family: 'Pirata One', cursive;
-  font-size: 2rem;
-  margin: 0;
-  color: #ddd;
+  font-family: 'Pirata One', cursive; font-size: 2rem; color: #ddd;
 }
 
-/* 2. Painel direito (informações) */
-.header-info-pane {
-  display: grid;
-  grid-template-rows: auto 1fr; /* Linha de cima com altura automática, e o resto para char info */
-  gap: 1rem;
-}
-
-/* 3. Grid das estatísticas (Recompensa, Título, Nível, XP) */
-.top-stats-grid {
-  display: grid;
-  grid-template-columns: 2fr 1.5fr 1fr 1.5fr; /* Proporções para as colunas */
-  gap: 1rem;
-  align-items: center;
-}
-
-.stat-box {
-  border: 2px solid #6b4f3a;
-  padding: 0.5rem;
-  text-align: center;
-  height: 100%;
+.header-right-pane {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 1rem;
 }
-.stat-box label {
-  font-family: 'Pirata One', cursive;
-  font-size: 1.1rem;
+.top-stats-bar {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 1.5fr;
+  gap: 1rem; align-items: stretch;
 }
-.stat-box input {
-  text-align: center;
-  font-size: 1rem;
-  padding: 2px;
+.stat-box {
+  border: 2px solid #6b4f3a; padding: 0.5rem; text-align: center;
 }
-.title-box {
-  border: 2px solid #6b4f3a;
-  font-family: 'Pirata One', cursive;
-  font-size: 1.2rem;
-  padding: 0.5rem;
-}
-.title-box h2 {
-  margin: 0;
-}
+.stat-box label { font-family: 'Pirata One', cursive; font-size: 1.1rem; }
+.stat-box input { text-align: center; font-size: 1rem; }
+.title-box { display: grid; place-items: center; border: 2px solid #6b4f3a; font-family: 'Pirata One', cursive; }
+.title-box h2 { font-size: 1.5rem; }
 
-/* 3. Grid das informações do personagem */
 .character-info-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Duas colunas de tamanho igual */
-  gap: 0 1rem; /* Espaçamento apenas entre as colunas */
-  border: 1px solid #8c6a4d;
-  padding: 0.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1rem;
+  border: 1px solid #8c6a4d; padding: 0.5rem;
 }
+.info-column { display: flex; flex-direction: column; gap: 0.5rem; }
+.info-field { display: grid; grid-template-columns: auto 1fr; align-items: center; border-bottom: 1px solid #6b4f3a; }
+.info-field label { font-weight: bold; padding-right: 0.5rem; text-transform: uppercase; font-size: 0.9rem;}
+.info-field input { border: none; }
 
-.info-column {
+/* --- BODY --- */
+.body-container {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1.5rem;
 }
 
-.info-field {
+/* Atributos e Objetos */
+.section-grid-attributes-objects {
   display: grid;
-  grid-template-columns: auto 1fr; /* Label com tamanho automático, input ocupa o resto */
-  align-items: center;
-  border-bottom: 1px solid #6b4f3a;
+  grid-template-columns: 28% 1fr;
+  gap: 1.5rem;
 }
-.info-field label {
-  font-weight: bold;
-  font-size: 0.9rem;
-  padding-right: 0.5rem;
-  text-transform: uppercase;
-}
-.info-field input {
-  border: none; /* Remove a borda padrão que definimos antes */
-}
+
+.attributes-section .attribute-row { display: grid; grid-template-columns: 40px repeat(4, 1fr); gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;}
+.attribute-name { font-family: 'Pirata One', cursive; font-size: 1.5rem; }
+.small-input { font-size: 0.9rem; text-align: center; padding: 2px; border: 1px solid #8c6a4d; }
+.vitality-grid { border-top: 1px solid #8c6a4d; border-bottom: 1px solid #8c6a4d; padding: 0.5rem 0; margin: 0.5rem 0;}
+.vit-dis-row { display: grid; grid-template-columns: 40px repeat(3, 1fr); gap: 0.5rem; align-items: center; }
+.vit-dis-row span { font-family: 'Pirata One', cursive; font-size: 1.2rem; }
+.vit-dis-row input { text-align: center; }
+.estado-row { display: flex; align-items: center; gap: 0.5rem; }
+.estado-row label { font-weight: bold; }
+
+.objects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.object-row { display: grid; grid-template-columns: 2fr 1fr 3fr; gap: 0.5rem; margin-bottom: 2px; }
+.quant-input { text-align: center; }
+
+/* Equipamento */
+.equipment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.equipment-column { display: flex; flex-direction: column; gap: 1rem; }
+.equip-item label { font-family: 'Pirata One', cursive; font-size: 1.2rem; }
+.equip-item input, .equip-item textarea { margin-top: 0.2rem; }
+.equip-item textarea { min-height: 40px; }
+
+/* Faculdades e Aprendizado */
+.section-grid-skills-abilities { display: grid; grid-template-columns: 1fr 2fr; gap: 1.5rem; }
+.faculdades-list { columns: 2; gap: 1rem; }
+.faculdade-row { display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem; font-size: 0.9rem;}
+.faculdade-name { white-space: nowrap; }
+.tiny-input { width: 30px; text-align: center; border: 1px solid #8c6a4d; }
+.faculdade-attr { background-color: #6b4f3a; color: #f5e5c0; padding: 2px 4px; border-radius: 3px; font-size: 0.7rem;}
+
+.aprendizado-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.aprendizado-header .section-title { margin-bottom: 0; border: none; text-align: left; }
+.pontos-box { display: flex; align-items: center; gap: 0.5rem; }
+
+.habilidades-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.8rem;}
+.habilidade-row { display: grid; grid-template-columns: 3fr 1fr 4fr; gap: 0.5rem; margin-bottom: 2px; }
