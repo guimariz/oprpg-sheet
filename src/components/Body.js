@@ -1,9 +1,9 @@
 // src/components/Body.js
 
 import React from 'react';
-import AttributesAndObjects from './AttributesAndObjects';
+import AttributesAndObjects from './attributesandobjects/AttributesAndObjects.js';
 import Equipment from './Equipment';
-import SkillsAndAbilities from './SkillsAndAbilities.js';
+import SkillsAndAbilities from './skillsandabilites/SkillsAndAbilities.js';
 
 const Body = ({ character, handleChange }) => {
   return (
