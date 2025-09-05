@@ -1,38 +1,111 @@
-.App {
-  text-align: center;
+/* src/App.css */
+
+/* Adicionar ao final do arquivo */
+
+/* 1. Grid principal do Header */
+.header-grid-container {
+  display: grid;
+  grid-template-columns: 200px 1fr; /* Coluna da imagem com 200px e o resto para as infos */
+  gap: 1.5rem;
+  padding: 1rem;
+  border: 2px solid #8c6a4d;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 1.5rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* 2. Painel esquerdo (imagem) */
+.header-image-pane {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  border: 3px solid #333;
+}
+.wanted-image-box {
+  flex-grow: 1; /* Ocupa todo o espaço disponível */
+  background-color: #e0d0b0;
+}
+.wanted-text-bar {
+  background-color: #333;
   color: white;
+  text-align: center;
+  padding: 5px 0;
+}
+.wanted-text {
+  font-family: 'Pirata One', cursive;
+  font-size: 2rem;
+  margin: 0;
+  color: #ddd;
 }
 
-.App-link {
-  color: #61dafb;
+/* 2. Painel direito (informações) */
+.header-info-pane {
+  display: grid;
+  grid-template-rows: auto 1fr; /* Linha de cima com altura automática, e o resto para char info */
+  gap: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* 3. Grid das estatísticas (Recompensa, Título, Nível, XP) */
+.top-stats-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 1.5fr; /* Proporções para as colunas */
+  gap: 1rem;
+  align-items: center;
+}
+
+.stat-box {
+  border: 2px solid #6b4f3a;
+  padding: 0.5rem;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.stat-box label {
+  font-family: 'Pirata One', cursive;
+  font-size: 1.1rem;
+}
+.stat-box input {
+  text-align: center;
+  font-size: 1rem;
+  padding: 2px;
+}
+.title-box {
+  border: 2px solid #6b4f3a;
+  font-family: 'Pirata One', cursive;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+.title-box h2 {
+  margin: 0;
+}
+
+/* 3. Grid das informações do personagem */
+.character-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Duas colunas de tamanho igual */
+  gap: 0 1rem; /* Espaçamento apenas entre as colunas */
+  border: 1px solid #8c6a4d;
+  padding: 0.5rem;
+}
+
+.info-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-field {
+  display: grid;
+  grid-template-columns: auto 1fr; /* Label com tamanho automático, input ocupa o resto */
+  align-items: center;
+  border-bottom: 1px solid #6b4f3a;
+}
+.info-field label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding-right: 0.5rem;
+  text-transform: uppercase;
+}
+.info-field input {
+  border: none; /* Remove a borda padrão que definimos antes */
 }
